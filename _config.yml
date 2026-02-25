@@ -1,0 +1,15 @@
+title: Plank
+description: A Smart Contract Language for the EVM
+url: "https://plankevm.github.io"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /blog/:title/
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

@@ -3,7 +3,12 @@ layout: default
 title: Home
 ---
 
-# Plank
+# Plank (Coming Soon: Q1 2026)
 
-A Smart Contract Language for the EVM.
+<p id="skibidi"> by <a href="https://x.com/philogy">Philogy</a> & <a href="https://x.com/OanaDesu">Oana B.</a></p>
+
+{% assign post = site.posts.first %}
+{% if post %}
+{{ post.content }}
+{% endif %}
 

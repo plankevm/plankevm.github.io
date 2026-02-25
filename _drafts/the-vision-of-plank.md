@@ -7,7 +7,7 @@ Plank's goal is to empower engineers building complex EVM-based smart contracts.
 
 Inspired by Foundry and other great tooling, we're raising the bar by learning from the successes and limitations of Solidity and Vyper. Their ecosystems have enabled massive progress, but we believe the standard for expressivity, optimization, and tooling can be much higher.
 
-## "Sensei": A Note on the Name Change
+## "Sensei": A Note on Naming
 
 When Philogy first introduced the language at DevConnect, it was called Sensei. In the months since, we've decided to rename it Plank.
 
@@ -17,7 +17,7 @@ We liked "Plank" for its simplicity and the lore it carries, from physics, to wo
 
 ### Making the Basics Work
 
-Some problems simply shouldn't exist in 2026: "stack too deep" errors, absurd --via-ir compile times, or basic editor functionality not working reliably, e.g., syntax highlighting, autocomplete, go-to-definition, hover information, etc.
+Some problems simply shouldn't exist in 2026: "stack too deep" errors, absurd `--via-ir` compile times, or basic editor functionality not working reliably, e.g., syntax highlighting, autocomplete, go-to-definition, hover information, etc.
 
 Furthermore, readable and safe code should not come at the cost of gas efficiency. Core primitives like ABI encoding and external calls must be ergonomic and compile down efficiently. High-level abstractions, such as functions and structs, must be zero-cost. And common standards, such as ERC712, should be available as type-safe, reusable builtins rather than requiring endless error prone repetition.
 
@@ -40,22 +40,22 @@ Better developer experience won't just make coding nicer, it will have concrete 
 
 Raise the floor at the language level, and the ceiling of what teams can safely build goes up.
 
-## How? High-Level Design
+## How to Craft a Plank
 
 All this sounds great, but how can we realistically expect to pull it off as a small team?
 
-First and most importantly, we're skibidi cracked, goated with the sauce (aka we use Claude - cautiously). Jokes aside, we're carefully adapting (aka borrowing from) Zig's compiler design to build a compiler that is minimal in implementation but broad in capability. 
+First and most importantly, we're skibidi cracked and goated with the sauce (aka we use Claude - cautiously). Jokes aside, we're carefully adapting Zig's compiler design to build a compiler that is minimal in implementation but broad in capability. 
 
 ### Comptime
 
 Most of Plank's power comes from *comptime*, the ability to expressively define and perform computation at compile time. Using the same syntax and constructs as normal code, library and application devs can:
 - Define generic functions and data types (via structs)
-- Manipulate types as values at compile time to specialize code, e.g. defining how abi.encode handles arbitrary types, or manipulating struct fields as strings to construct the ERC712 typehash
+- Manipulate types as values at compile time to specialize code, e.g. defining how `abi.encode` handles arbitrary types, or manipulating struct fields as strings to construct their ERC712 typehash
 - Use complex functions to compute constants that are then embedded in the final contract at zero cost
 
 In most other languages, these capabilities are usually provided by separate systems that not only need to be implemented independently, but are also complex. For example, Rust has an intricate type system and two macro systems, while not even providing full type introspection.
 
-Comptime already ensures that many abstractions are zero cost, since they exist purely as compile-time artifacts used to generate constants and specialized runtime code. But comptime alone isn't enough. This is where our new bleeding-edge IR comes in.
+Comptime already ensures that many abstractions are zero cost, since they exist purely as compile-time artifacts used to generate constants and specialized runtime code. But comptime alone isn't enough. This is where our new optimization pipeline comes in.
 
 ### Sensei IR (SIR)
 
@@ -73,22 +73,20 @@ Stack optimization usage isn't something developers can realistically do by hand
 
 ### Why We're Building Our Own IR
 
-The EVM as an ISA is simple enough that we believe it's worth investing in a bespoke code generation pipeline that prioritizes optimizations, security, and minimization of attack surface. SIR, our language-agnostic IR, was designed for this purpose, providing a low-level foundation that any EVM language can target. Besides Plank, Ora (another experimental smart contract language) has already adopted it, and we hope the Solar Solidity compiler will adopt it as well.
+The EVM as an ISA is simple enough that we believe it's worth investing in a bespoke code generation pipeline that prioritizes optimizations, security, and minimization of attack surface. In order to foster collaboration and community contributions, SIR was designed to be language-agnostic. [Ora](https://www.oralang.org/), another experimental smart contract language, is already adopting it, and we hope the Solar Solidity compiler will adopt it soon as well.
 
 Even though some alternative EVM IRs exist today, we decided to build our own because we do not believe they meet our goals:
 - **Yul:** the human-readable IR that Solidity is moving to has several known issues: poor compile times, stack-too-deep edge cases, and suboptimal optimizations.
 - **Venom:** Vyper's new SSA IR is promising due to its gas benchmarks and formal verification efforts. However, its Python implementation poses performance and integration challenges. Furthermore, it is primarily designed for Vyper and lacks some features we require for memory management.
-- **solx's LLVM fork:** the gas and runtime performance of solx's EVM code generation is promising, but its use of LLVM is concerning. LLVM is a huge dependency, notoriously slow and difficult to deal with. On top of that, LLVM does not natively support the EVM, so it requires continuous maintenance and backporting by the solx team.
+- **solx's LLVM fork:** the gas and runtime performance of solx's EVM code generation is promising as well, but its use of LLVM is concerning. LLVM is a huge dependency, notoriously slow and difficult to deal with. On top of that, LLVM does not natively support the EVM, so it requires continuous maintenance and backporting by the solx team.
 
 ## Roadmap
 
 We're building Plank in stages, each designed to ship a meaningful increment while moving towards our end goal of creating a complete, production-ready language.
 
-- **Phase I: MVP** - end-to-end compilation, fully working comptime, minimal optimizations.
-- **Phase II: Core QoL & Optimizations** - 80/20 quality-of-life improvements, LSP support, core optimizations such as memory management and stack scheduling.
-- **Phase III: Audit-Ready Contracts** - established contract abstractions, audit-ready code, and the beginning of formal verification for key components.
-- **Phase IV+: Full Verification & AI Assistance** - end-to-end compiler verification, with AI-assisted formal verification support.
+- **Phase I: MVP** - end-to-end compilation, fully working comptime, minimal optimizations. (End of Q1 2026)
+- **Phase II: Core QoL & Optimizations** - 80/20 quality-of-life improvements, LSP support, core optimizations such as memory management and stack scheduling. (~Q2 2026)
+- **Phase III: Audit-Ready Contracts** - established contract abstraction, audit-ready code, and the beginning of formal verification for key components. (TBD)
+- **Phase IV+: Full Verification & AI Assistance** - end-to-end compiler verification, with AI-assisted formal verification support. (TBD)
 
-Starting soon, we'll share regular updates on development progress. Follow along as Plank and SIR evolve, and we dig deeper into what's happening under the hood.
-
-This project is open-source and self-funded. If you're interested in contributing code or supporting the effort, reach out to us via [X](https://x.com/plankevm).
+This project is open-source and self-funded. If you're interested in contributing code or supporting the effort, reach out to us via [X](https://x.com/plankevm). We'll be posting regular updates there and on our [telegram channel](https://t.me/+whhpx5nPli1kNjM6).

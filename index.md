@@ -5,7 +5,7 @@ title: Home
 
 # Plank (Coming Soon: Q1 2026)
 
-<p id="skibidi"> by <a href="https://x.com/philogy">Philogy</a> & <a href="https://x.com/OanaDesu">Oana B.</a></p>
+by [Philogy](https://x.com/real_philogy) & [Oana B.](https://x.com/OanaDesu)
 
 {% assign post = site.posts.first %}
 {% if post %}

@@ -3,12 +3,11 @@ layout: default
 title: Home
 ---
 
-# Plank (Coming Soon: Q1 2026)
+# Plank
 
-by [Philogy](https://x.com/real_philogy) & [Oana B.](https://x.com/OanaDesu)
+A smart contract language for the EVM.
 
-{% assign post = site.posts.first %}
-{% if post %}
-{{ post.content }}
-{% endif %}
+```bash
+curl -L https://raw.githubusercontent.com/plankevm/plank-monorepo/main/plankup/install.sh | bash
+```
 

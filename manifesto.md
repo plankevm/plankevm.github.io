@@ -1,7 +1,12 @@
 ---
-layout: post
-title: "The Vision of Plank"
+layout: default
+title: Manifesto
+permalink: /manifesto/
 ---
+
+# The Vision of Plank
+
+by [Philogy](https://x.com/real_philogy) & [Oana B.](https://x.com/OanaDesu)
 
 Plank's goal is to empower engineers building complex EVM-based smart contracts. We believe that over the past years, Solidity and its compiler, a critical part of the dev tooling stack, has been neglected compared to other parts of the stack.
 
@@ -44,7 +49,7 @@ Raise the floor at the language level, and the ceiling of what teams can safely 
 
 All this sounds great, but how can we realistically expect to pull it off as a small team?
 
-First and most importantly, we're skibidi cracked and goated with the sauce (aka we use Claude - cautiously). Jokes aside, we're carefully adapting Zig's compiler design to build a compiler that is minimal in implementation but broad in capability. 
+First and most importantly, we're skibidi cracked and goated with the sauce (aka we use Claude - cautiously). Jokes aside, we're carefully adapting Zig's compiler design to build a compiler that is minimal in implementation but broad in capability.
 
 ### Comptime
 
@@ -79,25 +84,3 @@ Even though some alternative EVM IRs exist today, we decided to build our own be
 - **Yul:** the human-readable IR that Solidity is moving to has several known issues: poor compile times, stack-too-deep edge cases, and suboptimal optimizations.
 - **Venom:** Vyper's new SSA IR is promising due to its gas benchmarks and formal verification efforts. However, its Python implementation poses performance and integration challenges. Furthermore, it is primarily designed for Vyper and lacks some features we require for memory management.
 - **solx's LLVM fork:** the gas and runtime performance of solx's EVM code generation is promising as well, but its use of LLVM is concerning. LLVM is a huge dependency, notoriously slow and difficult to deal with. On top of that, LLVM does not natively support the EVM, so it requires continuous maintenance and backporting by the solx team.
-
-## Roadmap
-
-We're building Plank in stages, each designed to ship a meaningful increment while moving towards our end goal of creating a complete, production-ready language.
-
-1. **Make it Work** (April 2026)
-    - ✅ E2E Compilation
-    - 🚧 Minimal Comptime
-    - 🚧 Standard Library
-2. **Make it Good** (Q2-Q3 2026)
-    - 🧭 Consistently out-perform Solidity on max optimizations
-    - 🧭 Testing framework and/or tight Foundry integration
-    - 🧭 Linear Types, ADTs
-3. **Make it Easy** (TBD)
-    - 🧭 LSP (auto-complete, in-editor diagnostics)
-    - 🧭 Learning Resources (Tutorials, Docs)
-    - 🧭 AI Tooling
-    - 🧭 Other Usability Improvements
-4. **Make it Bulletproof** (TBD)
-    - 🧭 Compiler Formal Verification
-
-This project is open-source and self-funded. If you're interested in contributing code or supporting the effort, reach out to us via [X](https://x.com/plankevm). We'll be posting regular updates there and on our [telegram channel](https://t.me/+whhpx5nPli1kNjM6).

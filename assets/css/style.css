@@ -41,6 +41,27 @@ nav a:hover {
   color: #333;
 }
 
+.theme-toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle:hover {
+  color: #333;
+}
+
+.icon-moon { display: none; }
+.icon-sun { display: block; }
+
+[data-theme="dark"] .icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: none; }
+
 main {
   min-height: 60vh;
 }
@@ -186,6 +207,79 @@ blockquote {
 .sh-flag { color: #8839ef; }
 .sh-url { color: #40a02b; }
 .sh-op { color: #179299; }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  color: #cdd6f4;
+  background: #1e1e2e;
+}
+
+[data-theme="dark"] header {
+  border-bottom-color: #313244;
+}
+
+[data-theme="dark"] nav .logo {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] nav a {
+  color: #a6adc8;
+}
+
+[data-theme="dark"] nav a:hover,
+[data-theme="dark"] .theme-toggle:hover {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #a6adc8;
+}
+
+[data-theme="dark"] a {
+  color: #89b4fa;
+}
+
+[data-theme="dark"] code {
+  background: #313244;
+}
+
+[data-theme="dark"] pre {
+  background: #313244;
+}
+
+[data-theme="dark"] blockquote {
+  border-left-color: #45475a;
+  color: #a6adc8;
+}
+
+[data-theme="dark"] .install-box {
+  background: #313244;
+}
+
+[data-theme="dark"] .install-box code {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .install-copy {
+  color: #585b70;
+}
+
+[data-theme="dark"] .install-copy:hover {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .sh-cmd { color: #89b4fa; }
+[data-theme="dark"] .sh-flag { color: #cba6f7; }
+[data-theme="dark"] .sh-url { color: #a6e3a1; }
+[data-theme="dark"] .sh-op { color: #94e2d5; }
+
+[data-theme="dark"] footer {
+  border-top-color: #313244;
+  color: #a6adc8;
+}
 
 footer {
   margin-top: 4rem;

@@ -41,6 +41,27 @@ nav a:hover {
   color: #333;
 }
 
+.theme-toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle:hover {
+  color: #333;
+}
+
+.icon-moon { display: none; }
+.icon-sun { display: block; }
+
+[data-theme="dark"] .icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: none; }
+
 main {
   min-height: 60vh;
 }
@@ -121,10 +142,177 @@ blockquote {
   font-size: 0.9rem;
 }
 
+.hero {
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+}
+
+.install-box {
+  position: relative;
+  display: inline-block;
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 0.75rem 3rem 0.75rem 1.25rem;
+}
+
+.install-box code {
+  display: block;
+  color: #333;
+  background: none;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.install-copy {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.install-box:hover .install-copy {
+  opacity: 1;
+}
+
+.install-copy:hover {
+  color: #333;
+}
+
+.install-copy.copied {
+  color: #22c55e;
+}
+
+.sh-cmd { color: #1e66f5; }
+.sh-flag { color: #8839ef; }
+.sh-url { color: #40a02b; }
+.sh-op { color: #179299; }
+
 footer {
   margin-top: 4rem;
   padding-top: 1rem;
   border-top: 1px solid #eee;
   color: #666;
   font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.social-links a {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.social-links a:hover {
+  color: #333;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  color: #cdd6f4;
+  background: #1e1e2e;
+}
+
+[data-theme="dark"] header {
+  border-bottom-color: #313244;
+}
+
+[data-theme="dark"] nav .logo {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] nav a {
+  color: #a6adc8;
+}
+
+[data-theme="dark"] nav a:hover,
+[data-theme="dark"] .theme-toggle:hover {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #a6adc8;
+}
+
+[data-theme="dark"] a {
+  color: #89b4fa;
+}
+
+[data-theme="dark"] code {
+  background: #313244;
+}
+
+[data-theme="dark"] pre {
+  background: #313244;
+}
+
+[data-theme="dark"] blockquote {
+  border-left-color: #45475a;
+  color: #a6adc8;
+}
+
+[data-theme="dark"] .install-box {
+  background: #313244;
+}
+
+[data-theme="dark"] .install-box code {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .install-copy {
+  color: #585b70;
+}
+
+[data-theme="dark"] .install-copy:hover {
+  color: #cdd6f4;
+}
+
+[data-theme="dark"] .sh-cmd { color: #89b4fa; }
+[data-theme="dark"] .sh-flag { color: #cba6f7; }
+[data-theme="dark"] .sh-url { color: #a6e3a1; }
+[data-theme="dark"] .sh-op { color: #94e2d5; }
+
+[data-theme="dark"] footer {
+  border-top-color: #313244;
+  color: #a6adc8;
+}
+
+[data-theme="dark"] .social-links a {
+  color: #585b70;
+}
+
+[data-theme="dark"] .social-links a:hover {
+  color: #cdd6f4;
 }

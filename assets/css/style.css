@@ -208,6 +208,34 @@ blockquote {
 .sh-url { color: #40a02b; }
 .sh-op { color: #179299; }
 
+footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.social-links a {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.social-links a:hover {
+  color: #333;
+}
+
 [data-theme="dark"] {
   color-scheme: dark;
 }
@@ -281,10 +309,10 @@ blockquote {
   color: #a6adc8;
 }
 
-footer {
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
-  color: #666;
-  font-size: 0.9rem;
+[data-theme="dark"] .social-links a {
+  color: #585b70;
+}
+
+[data-theme="dark"] .social-links a:hover {
+  color: #cdd6f4;
 }

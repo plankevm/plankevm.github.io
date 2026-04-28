@@ -12,12 +12,6 @@ Plank's goal is to empower engineers building complex EVM-based smart contracts.
 
 Inspired by Foundry and other great tooling, we're raising the bar by learning from the successes and limitations of Solidity and Vyper. Their ecosystems have enabled massive progress, but we believe the standard for expressivity, optimization, and tooling can be much higher.
 
-## "Sensei": A Note on Naming
-
-When Philogy first introduced the language at DevConnect, it was called Sensei. In the months since, we've decided to rename it Plank.
-
-We liked "Plank" for its simplicity and the lore it carries, from physics, to wood, to Minecraft, all of which we can leverage for branding. "Sensei" is not gone entirely, we're recycling the name for our language-agnostic IR, which will be dubbed Sensei IR (SIR).
-
 ## Raising the Bar: From Developer Experience to Ecosystem Safety
 
 ### Making the Basics Work

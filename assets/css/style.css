@@ -316,3 +316,58 @@ footer {
 [data-theme="dark"] .social-links a:hover {
   color: #cdd6f4;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  nav {
+    gap: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  nav .logo {
+    font-size: 1.1rem;
+  }
+
+  .theme-toggle {
+    margin-left: 0;
+  }
+
+  .hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .install-box {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .install-box code {
+    font-size: 0.8rem;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.35rem; }
+  h3 { font-size: 1.15rem; }
+
+  ul, ol {
+    padding-left: 1.25rem;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}

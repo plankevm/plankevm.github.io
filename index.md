@@ -3,6 +3,7 @@ layout: default
 title: Home
 ---
 
+<div class="home-content">
 <section class="hero">
   <h1>Plank</h1>
   <p class="hero-subtitle">An EVM-Native Smart Contract Language</p>
@@ -13,4 +14,10 @@ title: Home
       </button>
     </div>
 </section>
+
+<h2 class="video-title">Check out Our Workshop at EthPrague&nbsp;2026</h2>
+<section class="video-embed" aria-label="Plank video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/MpKvH2dOVmY?si=2sEr7AxJM0Ro9mk_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+</div>
 

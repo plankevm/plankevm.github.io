@@ -234,8 +234,10 @@ blockquote {
 }
 
 .video-embed {
-  max-width: 720px;
-  margin: 0 auto 3rem;
+  width: min(700px, calc(100vw - 8rem));
+  max-width: none;
+  margin: 0 0 3rem 50%;
+  transform: translateX(-50%);
   aspect-ratio: 16 / 9;
 }
 
@@ -257,15 +259,19 @@ footer {
   border-top: 1px solid #eee;
   color: #666;
   font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.5rem 1.25rem;
+}
+
+footer span {
+  min-width: 0;
 }
 
 .social-links {
   display: flex;
+  flex: none;
   gap: 1.25rem;
 }
 
@@ -360,7 +366,7 @@ footer {
   color: #cdd6f4;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   body {
     padding: 1rem;
   }
@@ -414,7 +420,10 @@ footer {
   }
 
   .video-embed {
+    width: auto;
     max-width: 560px;
+    margin: 0 auto 3rem;
+    transform: none;
   }
 
   h1 { font-size: 1.75rem; }
@@ -426,8 +435,7 @@ footer {
   }
 
   footer {
-    flex-direction: column;
-    text-align: center;
+    text-align: left;
     gap: 1rem;
   }
 }

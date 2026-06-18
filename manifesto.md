@@ -43,7 +43,9 @@ Raise the floor at the language level, and the ceiling of what teams can safely 
 
 All this sounds great, but how can we realistically expect to pull it off as a small team?
 
-First and most importantly, we're skibidi cracked and goated with the sauce (aka we use Claude - cautiously). Jokes aside, we're carefully adapting Zig's compiler design to build a compiler that is minimal in implementation but broad in capability.
+Our main edge is that we're pursuing a design heavily inspired by Zig which is quite
+unique for smart contract languages. This design allows us to deliver a more comprehensive and polished set of features
+while minimizing the set of things that need to be implemented, audited & maintained at the heart of the compiler.
 
 ### Comptime
 

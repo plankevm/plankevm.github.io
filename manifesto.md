@@ -74,7 +74,7 @@ Stack optimization usage isn't something developers can realistically do by hand
 
 ### Why We're Building Our Own IR
 
-The EVM as an ISA is simple enough that we believe it's worth investing in a bespoke code generation pipeline that prioritizes optimizations, security, and minimization of attack surface. In order to foster collaboration and community contributions, SIR was designed to be language-agnostic. [Ora](https://www.oralang.org/), another experimental smart contract language, is already adopting it, and we hope the Solar Solidity compiler will adopt it soon as well.
+The EVM as an ISA is simple enough that we believe it's worth investing in a bespoke code generation pipeline that prioritizes optimizations, security, and minimization of attack surface.
 
 Even though some alternative EVM IRs exist today, we decided to build our own because we do not believe they meet our goals:
 - **Yul:** the human-readable IR that Solidity is moving to has several known issues: poor compile times, stack-too-deep edge cases, and suboptimal optimizations.

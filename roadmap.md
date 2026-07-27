@@ -29,7 +29,4 @@ We're building Plank in stages, each designed to ship a meaningful increment whi
     - 🧭 Spec Audit
 
 This project is open-source and self-funded. If you'd like to support our work
-and help accelerate our timelines we're accepting donations as part of the
-[Ethereum Security QF Round](https://qf.giveth.io/project/plankevm). Thanks to
-their matching pool even small donations as large as a few dollars has a massive
-impact.
+and help accelerate our timelines we're accepting [donations](https://qf.giveth.io/project/plankevm).

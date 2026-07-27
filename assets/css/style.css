@@ -44,6 +44,12 @@ nav a:hover {
   color: #333;
 }
 
+nav .nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
 .theme-toggle {
   margin-left: auto;
   background: none;
@@ -123,6 +129,23 @@ blockquote {
   margin-bottom: 1rem;
 }
 
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #f4f4f4;
+}
+
 .post-header {
   margin-bottom: 2rem;
 }
@@ -138,6 +161,10 @@ blockquote {
 }
 
 .post-list li {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -330,6 +357,15 @@ footer span {
 [data-theme="dark"] blockquote {
   border-left-color: #45475a;
   color: #a6adc8;
+}
+
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  border-color: #45475a;
+}
+
+[data-theme="dark"] th {
+  background: #313244;
 }
 
 [data-theme="dark"] .install-box {

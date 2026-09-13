@@ -10,6 +10,7 @@ permalink: /blog/:title/
 
 # Build settings
 exclude:
+  - vendor
   - Gemfile
   - Gemfile.lock
   - README.md

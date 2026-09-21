@@ -6,11 +6,11 @@ math: true
 
 # {{ page.title }}
 
-A while ago [Josselin Feist](https://x.com/Montyly) wrote [Getting Rounding
+A while ago, [Josselin Feist](https://x.com/Montyly) wrote [Getting Rounding
 Right](https://seceureka.com/blog/rounding-in-defi), an excellent piece going
 over why rounding matters and why it's non-trivial when developing smart contracts.
 
-Assuming you're familiar with the problem (read _Getting Rounding Right_ if you're
+Assuming you're familiar with the problem (read the article if you're
 not), I want to jump straight to a cool demo with Plank, showing off how you can
 extend the language with a simple library to help you define and
 set the rounding direction of an entire equation to more easily "round in favor
@@ -27,6 +27,8 @@ nicely categorized, namely complexity and reusability. To reiterate:
 The core idea is simple: if we can manipulate/inspect the equation as data, we
 can easily propagate the top-level rounding preference based on simple rules:
 
+(TODO: give more explain rules)
+
 |Operation|Rounding Down|Rounding Up|
 |---------|----------|--------|
 |$$A \cdot B$$ (unsigned)|$$\text{down}(A) \cdot \text{down}(B)$$|$$\text{up}(A)\cdot\text{up}(B)$$|
@@ -35,11 +37,15 @@ can easily propagate the top-level rounding preference based on simple rules:
 |$$A / B$$ (unsigned)|$$\left\lfloor \frac{\text{down}(A)}{\text{up}(B)} \right\rfloor$$|$$\left\lceil \frac{\text{up}(A)}{\text{down}(B)} \right\rceil$$|
 |$$A^P$$ (unsigned)|$$\begin{cases} \text{down}(A)^{\text{up}(P)} & \text{if } \text{down}(A) < 1 \\ \text{down}(A)^{\text{down}(P)} & \text{otherwise} \end{cases}$$|$$\begin{cases} \text{up}(A)^{\text{down}(P)} & \text{if } \text{up}(A) < 1 \\ \text{up}(A)^{\text{up}(P)} & \text{otherwise} \end{cases}$$|
 
-This is straightforward to define in Plank (note this uses some newer, unreleased
-features in the language; you'll need to build from source on the `main` branch
-if you want to fully follow along):
+> Note: The code demoed in this article uses some of the new v0.2 features,
+> which as of now (22-Sep-2026) is not yet in
+> a stable release. Build from source on `main` if you want to try it out.
+
+
+These rules are straightforward to define in Plank:
 
 ```plank
+// For the plain `u256` inputs in a calculation.
 const Value = struct {
     value: u256,
 
@@ -48,17 +54,29 @@ const Value = struct {
     }
 };
 
-const Mul = fn (Lhs: type, Rhs: type) type {
+const Div = fn (Lhs: type, Rhs: type) type {
     struct {
         lhs: Lhs,
         rhs: Rhs,
 
         fn eval(self: Self, round_up: bool) u256 {
-            self.lhs.eval(round_up) * self.rhs.eval(round_up)
+            // In Plank `+/` is integer division that rounds towards +∞ and `-/` towards -∞
+            if round_up {
+                self.lhs.eval(true) +/ self.rhs.eval(false)
+            } else {
+                self.lhs.eval(false) -/ self.rhs.eval(true)
+            }
         }
     }
 };
+```
 
+<details markdown="1">
+<summary markdown="span">
+_Expand for full definitions of `Add`, `Sub`, `Mul`_
+</summary>
+
+```plank
 const Add = fn (Lhs: type, Rhs: type) type {
     struct {
         lhs: Lhs,
@@ -81,24 +99,23 @@ const Sub = fn (Lhs: type, Rhs: type) type {
     }
 };
 
-const Div = fn (Lhs: type, Rhs: type) type {
+const Mul = fn (Lhs: type, Rhs: type) type {
     struct {
         lhs: Lhs,
         rhs: Rhs,
 
         fn eval(self: Self, round_up: bool) u256 {
-            // In Plank `+/` is integer division that rounds towards +∞ and `-/` towards -∞
-            if round_up {
-                self.lhs.eval(true) +/ self.rhs.eval(false)
-            } else {
-                self.lhs.eval(false) -/ self.rhs.eval(true)
-            }
+            self.lhs.eval(round_up) * self.rhs.eval(round_up)
         }
     }
 };
 ```
 
-Now we can define computations and they will automatically propagate rounding (I
+</details>
+
+<p></p>
+
+Now we can define a calculation like `x * WAD / y` and it will automatically propagate rounding (I
 know this is **super** ugly and we will fix that in a moment):
 
 ```plank
@@ -107,23 +124,17 @@ const WAD = 1000000000000000000;
 const wad_div_up = fn (x: u256, y: u256) u256 {
     Div(Mul(Value, Value), Value) {
         lhs: Mul(Value, Value) {
-            lhs: Value {
-                value: x,
-            },
-            rhs: Value {
-                value: WAD,
-            }
+            lhs: Value { value: x },
+            rhs: Value { value: WAD },
         },
-        rhs: Value {
-            value: y,
-        }
+        rhs: Value { value: y },
     }.eval(true)
 };
 ```
 
 Leveraging generics, we can now represent our computations: multiplication,
 addition, subtraction, division (and more if we wanted) as data, deferring the
-actual calculation until we have the extra information (the rounding direction).
+actual calculation until we have the rounding direction.
 
 ## Cleaning up the Library
 
@@ -165,7 +176,7 @@ const wad_div_up = fn (x: u256, y: u256) u256 {
 Much cleaner! But we can do even better.
 
 The `Mul`, `Div`, `Add` and `Sub` types are already generic, so they could just handle `u256`
-directly instead of requiring us to wrap it in a `Value` node:
+directly instead of requiring us to wrap it in `value(...)`:
 
 ```plank
 // `$T` means the parameter `x` is allowed to be any type and the type it ends

@@ -122,6 +122,35 @@ pre code {
   padding: 0;
 }
 
+/* Rouge tokens for fenced Plank blocks (including the plk alias). */
+:is(.language-plank, .language-plk) {
+  --syntax-comment: #6c6f85;
+  --syntax-keyword: #8839ef;
+  --syntax-type: #9c6400;
+  --syntax-string: #287d18;
+  --syntax-number: #b34b00;
+  --syntax-function: #1e66f5;
+  --syntax-operator: #147d83;
+}
+
+[data-theme="dark"] :is(.language-plank, .language-plk) {
+  --syntax-comment: #a6adc8;
+  --syntax-keyword: #cba6f7;
+  --syntax-type: #f9e2af;
+  --syntax-string: #a6e3a1;
+  --syntax-number: #fab387;
+  --syntax-function: #89b4fa;
+  --syntax-operator: #94e2d5;
+}
+
+:is(.language-plank, .language-plk) :is(.c1, .cm) { color: var(--syntax-comment); }
+:is(.language-plank, .language-plk) .k { color: var(--syntax-keyword); }
+:is(.language-plank, .language-plk) .kt { color: var(--syntax-type); }
+:is(.language-plank, .language-plk) .s2 { color: var(--syntax-string); }
+:is(.language-plank, .language-plk) :is(.kc, .mi, .mh, .mb, .se) { color: var(--syntax-number); }
+:is(.language-plank, .language-plk) :is(.nb, .nf) { color: var(--syntax-function); }
+:is(.language-plank, .language-plk) :is(.o, .ow) { color: var(--syntax-operator); }
+
 blockquote {
   border-left: 3px solid #ddd;
   padding-left: 1rem;

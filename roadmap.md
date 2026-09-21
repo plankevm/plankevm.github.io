@@ -19,22 +19,21 @@ We're building Plank in stages, each designed to ship a meaningful increment whi
     - 🚧 Contract Primitives in Standard Library
         - 🚧 Improved ABI encoding & decoding
         - 🚧 Storage layout generation
-        - 🚧 Type-safe Generic ERC-712
+        - 🚧 ERC712
 3. **🧭 v0.3** (Name & Timeline TBD)
     - 🧭 Linear Types
     - 🧭 Enums (aka tagged unions)
 4. **🧭 Tooling & Content** (TBD)
     - 🚧 New branding and site refresh
     - 🚧 Learning Resources (Tutorials, Docs)
-    - 🧭 LSP (auto-complete, in-editor diagnostics)
+    - 🧭 LSP (autocomplete, in-editor diagnostics)
     - 🧭 Tight Foundry integration / custom framework
 5. **🚧 E2E Formally Verified** (TBD)
-    - ✅ [Exploratory formalization work in Lean4](https://github.com/plankevm/sir-lean)
+    - ✅ Exploratory formalization work in Lean4
     - 🚧 Formalize SIR in Lean4
     - 🧭 Verify parallel SIR optimizer and backend
     - 🧭 Formalize Plank in Lean4
     - 🧭 Verify Plank frontend in Lean4
-    - 🧭 Get a 3rd party audit of specifications
+    - 🧭 Get a third-party audit of the specifications
 
-This project is open-source and self-funded. If you'd like to support our work
-and help accelerate our timelines we're accepting [donations](https://qf.giveth.io/project/plankevm).
+This project is open source and self-funded. If you'd like to support our work and help accelerate our timelines, [we're accepting donations](https://giveth.io/project/plankevm).

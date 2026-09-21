@@ -27,8 +27,6 @@ nicely categorized, namely complexity and reusability. To reiterate:
 The core idea is simple: if we can manipulate/inspect the equation as data, we
 can easily propagate the top-level rounding preference based on simple rules:
 
-(TODO: give more explain rules)
-
 |Operation|Rounding Down|Rounding Up|
 |---------|----------|--------|
 |$$A \cdot B$$ (unsigned)|$$\text{down}(A) \cdot \text{down}(B)$$|$$\text{up}(A)\cdot\text{up}(B)$$|
